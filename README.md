@@ -51,7 +51,7 @@ php artisan key:generate
 ./vendor/bin/sail up
 
 # Create the database tables and seed with demo data
-php artisan migrate --seed
+sail artisan migrate --seed
 ```
 
 The REST API should now be running and accessible at `http://localhost:8000`.
