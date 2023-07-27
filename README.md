@@ -11,6 +11,8 @@ Before proceeding, make sure you have the following software installed on your m
 1. **Git**: Version control system for cloning the repositories.
 2. **Docker**: Containerization platform for running the Laravel Sail environment.
 3. **Node.js**: JavaScript runtime for running the Next.js client.
+4. PHP ^8.1
+5. Composer
 
 ## Step 1: Clone the Repositories
 
@@ -18,10 +20,10 @@ Open your terminal and clone the two repositories for the REST API and the Next.
 
 ```bash
 # Clone the Laravel Sail REST API repo
-git clone <https://github.com/tobiom123/world-wide-capitals-rest-api.git>
+git clone https://github.com/tobiom123/world-wide-capitals-rest-api.git
 
 # Clone the Next.js client repo
-git clone <https://github.com/tobiom123/world-wide-capitals-client.git>
+git clone https://github.com/tobiom123/world-wide-capitals-client.git
 ```
 
 ## Step 2: Set up the Laravel Sail REST API
@@ -29,7 +31,7 @@ git clone <https://github.com/tobiom123/world-wide-capitals-client.git>
 1. Change into the REST API directory.
 
 ```bash
-cd <world-wide-capitals-rest-api>
+cd world-wide-capitals-rest-api
 ```
 
 2. Install dependencies and set up the environment.
@@ -40,9 +42,6 @@ cp .env.example .env
 
 # Install PHP dependencies
 composer install
-
-# Generate the application key
-php artisan key:generate
 ```
 
 3. Run the Laravel Sail environment using Docker.
@@ -50,8 +49,11 @@ php artisan key:generate
 ```bash
 ./vendor/bin/sail up
 
+# Generate the application key
+./vendor/bin/sail artisan key:generate
+
 # Create the database tables and seed with demo data
-sail artisan migrate --seed
+./vendor/bin/sail artisan migrate --seed
 ```
 
 The REST API should now be running and accessible at `http://localhost:8000`.
